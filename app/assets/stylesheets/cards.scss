@@ -1,3 +1,14 @@
 // Place all the styles related to the Cards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+table, th, td {
+    border: 1px solid;
+}
+.column {
+    float: left;
+    width: 50%;
+    padding: 5px;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

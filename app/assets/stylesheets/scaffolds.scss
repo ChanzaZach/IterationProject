@@ -1,5 +1,9 @@
+table, th, td {
+  border: 1px solid;
+}
+
 body {
-  background-color: #fff;
+  background-color: #BDB76B;
   color: #333;
   margin: 33px; }
 
@@ -9,7 +13,7 @@ body, p, ol, ul, td {
   line-height: 18px; }
 
 pre {
-  background-color: #eee;
+  background-color: #BDB76B;
   padding: 10px;
   font-size: 11px; }
 
@@ -21,7 +25,7 @@ a:visited {
 
 a:hover {
   color: #fff;
-  background-color: #000; }
+}
 
 th {
   padding-bottom: 5px; }
