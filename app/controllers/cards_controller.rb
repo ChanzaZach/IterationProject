@@ -7,6 +7,8 @@ class CardsController < ApplicationController
     @cards = Card.all
   end
 
+  
+
   # GET /cards/1 or /cards/1.json
   def show
   end
@@ -58,7 +60,15 @@ class CardsController < ApplicationController
     end
   end
 
-  private
+  def search
+    if params[:search].blank?
+      redirect_to cards_path and return
+    else
+      @parameter = params[:search].downcase
+      @results = Card.all.where("lower(title) LIKE :search", search: "%#{@parameter}%")
+  end
+end
+private
     # Use callbacks to share common setup or constraints between actions.
     def set_card
       @card = Card.find(params[:id])
@@ -68,4 +78,4 @@ class CardsController < ApplicationController
     def card_params
       params.require(:card).permit(:title, :description, :variety, :num)
     end
-end
+  end

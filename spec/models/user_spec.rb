@@ -16,6 +16,16 @@ RSpec.describe User, type: :model do
           expect(@user).to be_valid
         end
       end
+      context 'user model validation' do
+        it 'must have an email' do
+          user = User.new(password: 'password').save
+          expect(user).to eq(false)
+        end
+        it 'must have a password' do
+          user = User.new(email: 'email').save
+          expect(user).to eq(false)
+        end
+      end
     end
   end
 end

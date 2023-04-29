@@ -9,58 +9,68 @@
           null,
           null,
           1,
-          3,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
-          3,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
-          3,
-          null,
-          3,
-          3,
-          2,
-          1,
-          null,
           4,
-          2,
           null,
           null,
           null,
           null,
           null,
           1,
-          3,
-          3,
-          2,
-          1,
-          null,
-          4,
-          2,
-          null,
-          null,
           null,
           null,
           null,
           1,
           0,
           null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
           0,
           0,
           0,
           null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          0,
           null,
           null,
           1,
@@ -71,7 +81,7 @@
           null,
           null,
           1,
-          6,
+          0,
           null,
           null
         ]
@@ -84,6 +94,8 @@
       },
       "/root/IterationProject/app/models/card.rb": {
         "lines": [
+          1,
+          1,
           1,
           1,
           1,
@@ -110,16 +122,6 @@
         "branches": {
         }
       },
-      "/root/IterationProject/app/controllers/home_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
       "/root/IterationProject/app/helpers/application_helper.rb": {
         "lines": [
           0,
@@ -129,14 +131,6 @@
         }
       },
       "/root/IterationProject/app/helpers/cards_helper.rb": {
-        "lines": [
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/root/IterationProject/app/helpers/home_helper.rb": {
         "lines": [
           0,
           0
@@ -189,6 +183,6 @@
         }
       }
     },
-    "timestamp": 1682750123
+    "timestamp": 1682808697
   }
 }

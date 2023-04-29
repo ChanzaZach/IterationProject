@@ -1,5 +1,5 @@
-require "rails_helper"
-
+require 'rails_helper'
+require 'spec_helper'
 
 RSpec.feature "Cards", type: :feature do
     context "Login" do
@@ -14,10 +14,16 @@ RSpec.feature "Cards", type: :feature do
           end
           expect(page).to have_content("Welcome! You have signed up successfully.")
         end
-      end
     
+        scenario "should log in" do
+          user = FactoryBot.create(:user)
+          login_as(user)
+          visit root_path
+          expect(page).to have_content("Logged In")
+        end
+      end
     context "Update card" do
-      let(:card) { Card.create(title: "Test title", description: "Test content") }
+      let(:card) { Card.create(title: "Test title", description: "Test content", variety: "Test Variety", num: "Test Num") }
       before(:each) do
         user = FactoryBot.create(:user)
         login_as(user)
@@ -26,7 +32,28 @@ RSpec.feature "Cards", type: :feature do
  
       scenario "should be successful" do
         within("form") do
+          fill_in "Title", with: "New title content"
+        end
+        click_button "Update Card"
+        expect(page).to have_content("Card was successfully updated")
+      end
+      scenario "should be successful" do
+        within("form") do
           fill_in "Description", with: "New description content"
+        end
+        click_button "Update Card"
+        expect(page).to have_content("Card was successfully updated")
+      end
+      scenario "should be successful" do
+        within("form") do
+          fill_in "Variety", with: "New variety content"
+        end
+        click_button "Update Card"
+        expect(page).to have_content("Card was successfully updated")
+      end
+      scenario "should be successful" do
+        within("form") do
+          fill_in "Num", with: "New num content"
         end
         click_button "Update Card"
         expect(page).to have_content("Card was successfully updated")
@@ -35,52 +62,31 @@ RSpec.feature "Cards", type: :feature do
  
       scenario "should fail" do
         within("form") do
-          fill_in "Description", with: ""
-        end
-        click_button "Update Card"
-        expect(page).to have_content("Description can't be blank")
-      end
-      scenario "should fail" do
-        within("form") do
           fill_in "Title", with: ""
         end
         click_button "Update Card"
         expect(page).to have_content("Title can't be blank")
       end
-    end
-end
-RSpec.feature "Cards", type: :feature do
-    context "Create Card" do
-      let(:card) { Card.create(title: "Test title", description: "Test content") }
-      before(:each) do
-        user = FactoryBot.create(:user)
-        login_as(user)
-        visit new_card_path(card)
-      end
- 
-      scenario "should be successful" do
-        within("form") do
-          fill_in "Title", with: "Title"
-          fill_in "Description", with: "Description"
-        end
-        click_button "Create Card"
-        expect(page).to have_content("Card was successfully created")
-      end
-
- 
       scenario "should fail" do
         within("form") do
           fill_in "Description", with: ""
         end
-        click_button "Create Card"
+        click_button "Update Card"
         expect(page).to have_content("Description can't be blank")
       end
       scenario "should fail" do
         within("form") do
-         fill_in "Title", with: ""
+          fill_in "Variety", with: ""
         end
-        click_button "Create Card"
-        expect(page).to have_content("Title can't be blank")
+        click_button "Update Card"
+        expect(page).to have_content("Variety can't be blank")
+      end
+      scenario "should fail" do
+        within("form") do
+          fill_in "Num", with: ""
+        end
+        click_button "Update Card"
+        expect(page).to have_content("Num can't be blank")
       end
     end
 end
