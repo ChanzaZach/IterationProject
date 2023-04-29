@@ -2,76 +2,6 @@
 
 <h1>Cards</h1>
 
-<!-- TableFilter JavaScript Library - CSS Styles -->
-<link href="https://unpkg.com/tablefilter@0.7.2/dist/tablefilter/style/tablefilter.css" rel="stylesheet" />
-<style type="text/css">
-  .alphabet-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  .alphabet-filter:hover {
-    font-weight: bolder;
-    background-color: lightgray;
-  }
-</style>
-<div class="alphabet-container">
-  <button class="btn alphabet-filter" onclick="filter(event);" value="">All
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="A">A
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="B">B
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="C">C
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="D">D
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="E">E
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="F">F
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="G">G
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="H">H
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="I">I
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="J">J
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="K">K
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="L">L
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="M">M
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="N">N
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="O">O
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="P">P
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="Q">Q
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="R">R
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="S">S
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="T">T
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="U">U
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="V">V
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="W">W
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="X">X
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="Y">Y
-  </button>
-  <button class="btn alphabet-filter" onclick="filter(event);" value="Z">Z
-  </button>
-</div>
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
@@ -91,7 +21,6 @@
         <td><%= card.variety %></td>
         <td><%= card.num %></td>
         <td> <%= link_to 'Show', card %> </td>
-        
         <% if user_signed_in? %>
           <td> <%= link_to 'Edit', edit_card_path(card) %> <%= ' | '%> <%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
         <% end %>
@@ -105,25 +34,25 @@
 <script src="https://unpkg.com/tablefilter@0.7.2/dist/tablefilter/tf-1-2aa33b10e0e549020c12.js">
 </script>
 <script>
-  // filter by first letter logic
+  # filter by first letter logic
   function filter(evt){
     var elm = evt.target;
     var query = elm.value.length > 0 ? tf.stOperator + elm.value : '';
-    // set the column's filter value
+    # set the columns filter value
     tf.setFilterValue(1, query);
-    // filter the table
+    # filter the table
     tf.filter();
-    // clear previously marked element
+    # clear previously marked element
     if(tf.selectedLetter) {
       tf.selectedLetter.classList.remove('btn-primary');
     }
-    // mark selected letter
+    # mark selected letter
     elm.classList.add('btn-primary');
-    // keep reference of selected element
+    # keep reference of selected element
     tf.selectedLetter = elm;
   }
   var tf = new TableFilter(
-    document.querySelector('#countries-codes'),
+    document.querySelector('#Title'),
     {
       base_path: 'tablefilter/',
       start_with_operator: '←',
@@ -131,21 +60,15 @@
         length: 10
       },
       rows_counter: {
-        text: 'Countries: '
+        text: ''
       },
       col_types: [
         'string', 'string', 'string',
-        'string', 'number'
+        'string'
       ],
-      //col_widths: [
-      //  '75px','350px','350px',
-      //  '75px','75px'
-      //],
-      // hide filters
       on_filters_loaded: function(tf) {
         tf.dom().rows[tf.getFiltersRowIndex()].style.display = 'none';
       },
-      // sorting feature
       extensions: [{
         name: 'sort'
       }]
@@ -153,7 +76,7 @@
   );
   document.addEventListener("DOMContentLoaded", function(event) {
     tf.init();
-    // keep reference of selected letter element
+    #keep reference of selected letter element
     tf.selectedLetter = null;
   });
 </script>
