@@ -7,8 +7,9 @@ jobs:
       - image: 'tghastings/code-esaas'
     steps:
       - checkout
-      - run: NODE_ENV=test bundle exec rails webpacker:compile
-          command: sed -i 's/ruby "[0-9].[0-9].[0-9]"/ruby "3.0.2"/' Gemfile && bundle install && bundle exec rspec
+      - run:
+          name: rspec
+          command: sed -i 's/ruby "[0-9].[0-9].[0-9]"/ruby "3.0.2"/' Gemfile && bundle install && bundle exec rspec webpacker:compile
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
