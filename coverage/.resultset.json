@@ -112,16 +112,6 @@
         "branches": {
         }
       },
-      "/root/IterationProject/app/controllers/home_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
       "/root/IterationProject/app/helpers/application_helper.rb": {
         "lines": [
           0,
@@ -131,14 +121,6 @@
         }
       },
       "/root/IterationProject/app/helpers/cards_helper.rb": {
-        "lines": [
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/root/IterationProject/app/helpers/home_helper.rb": {
         "lines": [
           0,
           0
@@ -191,6 +173,6 @@
         }
       }
     },
-    "timestamp": 1682796537
+    "timestamp": 1682797298
   }
 }
