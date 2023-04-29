@@ -78,6 +78,7 @@
       <th>Title</th>
       <th>Description</th>
       <th>Type</th>
+      <th>Id</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -87,13 +88,71 @@
       <tr>
         <td><%= card.title %></td>
         <td><%= card.description %></td>
-        <td><%= card.type %></td>
+        <td><%= card.variety %></td>
+        <td><%= card.num %></td>
         <td><%= link_to 'Show', card %> <%= ' | '%> <%= link_to 'Edit', edit_card_path(card) %> <%= ' | '%> <%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<!-- TableFilter JavaScript Library https://www.tablefilter.com/alphabetical-pager.html -->
+<script src="https://unpkg.com/tablefilter@0.7.2/dist/tablefilter/tablefilter.js">
+</script>
+<script src="https://unpkg.com/tablefilter@0.7.2/dist/tablefilter/tf-1-2aa33b10e0e549020c12.js">
+</script>
+<script>
+  // filter by first letter logic
+  function filter(evt){
+    var elm = evt.target;
+    var query = elm.value.length > 0 ? tf.stOperator + elm.value : '';
+    // set the column's filter value
+    tf.setFilterValue(1, query);
+    // filter the table
+    tf.filter();
+    // clear previously marked element
+    if(tf.selectedLetter) {
+      tf.selectedLetter.classList.remove('btn-primary');
+    }
+    // mark selected letter
+    elm.classList.add('btn-primary');
+    // keep reference of selected element
+    tf.selectedLetter = elm;
+  }
+  var tf = new TableFilter(
+    document.querySelector('#countries-codes'),
+    {
+      base_path: 'tablefilter/',
+      start_with_operator: '←',
+      paging: {
+        length: 10
+      },
+      rows_counter: {
+        text: 'Countries: '
+      },
+      col_types: [
+        'string', 'string', 'string',
+        'string', 'number'
+      ],
+      //col_widths: [
+      //  '75px','350px','350px',
+      //  '75px','75px'
+      //],
+      // hide filters
+      on_filters_loaded: function(tf) {
+        tf.dom().rows[tf.getFiltersRowIndex()].style.display = 'none';
+      },
+      // sorting feature
+      extensions: [{
+        name: 'sort'
+      }]
+    }
+  );
+  document.addEventListener("DOMContentLoaded", function(event) {
+    tf.init();
+    // keep reference of selected letter element
+    tf.selectedLetter = null;
+  });
+</script>
 <br>
 
 <%= link_to 'New Card', new_card_path %>
