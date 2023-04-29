@@ -19,9 +19,6 @@
       <td><%= result.variety %></td>
       <td><%= result.num %></td>
       <td> <%= link_to 'Show', result %> </td>
-      <% if user_signed_in? %>
-        <td> <%= link_to 'Edit', edit_card_path(result) %> <%= ' | '%> <%= link_to 'Destroy', result, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
-      <% end %>
     </tr>
   <%end %>
   </tbody>
