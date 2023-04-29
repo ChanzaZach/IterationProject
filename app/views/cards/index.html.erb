@@ -90,8 +90,10 @@
         <td><%= card.description %></td>
         <td><%= card.variety %></td>
         <td><%= card.num %></td>
+        <td> <%= link_to 'Show', card %> </td>
+        
         <% if user_signed_in? %>
-        <td><%= link_to 'Show', card %> <%= ' | '%> <%= link_to 'Edit', edit_card_path(card) %> <%= ' | '%> <%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td> <%= link_to 'Edit', edit_card_path(card) %> <%= ' | '%> <%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
         <% end %>
       </tr>
     <% end %>
